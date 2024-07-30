@@ -1,0 +1,10 @@
+---
+- name: redhat_pamd_fix
+  hosts: all
+  gather_facts: yes
+  become_user: root
+  tasks:
+    - name: redhat_pamd_fix
+      include_role:
+        name: redhat_pamd_fix
+
