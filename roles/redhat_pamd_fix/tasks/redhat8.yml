@@ -14,6 +14,12 @@
     mode: 0644
     remote_src: yes
 
+- name: Archive the backup directory
+  command: tar -czvf /root/.aap_etc_backup_{{ ansible_date_time.iso8601_basic }}.tar.gz -C /root .aap_etc_backup_{{ ansible_date_time.iso8601_basic }}
+
+- name: Remove the uncompressed backup directory
+  command: rm -rf /root/.aap_etc_backup_{{ ansible_date_time.iso8601_basic }}
+
 - name: Copy password-auth-ac to /etc/pam.d/password-auth-ac 
   copy:
     src: password-auth-ac
