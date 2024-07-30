@@ -28,6 +28,9 @@
     group: root
     mode: 0644
 
+- name: Restore SELinux context for password-auth-ac
+  command: restorecon -Rv /etc/pam.d/password-auth-ac
+
 - name: Copy system-auth-ac to /etc/pam.d/system-auth-ac
   copy:
     src: system-auth-ac
@@ -35,6 +38,9 @@
     owner: root
     group: root
     mode: 0644
+
+- name: Restore SELinux context for system-auth-ac
+  command: restorecon -Rv /etc/pam.d/system-auth-ac
 
 - name: Copy passwd to /etc/pam.d/passwd
   copy:
@@ -44,6 +50,9 @@
     group: root
     mode: 0644
 
+- name: Restore SELinux context for passwd
+  command: restorecon -Rv /etc/pam.d/passwd
+
 - name: Copy postlogin to /etc/authselect/postlogin
   copy:
     src: postlogin
@@ -52,5 +61,5 @@
     group: root
     mode: 0644
 
-- name: Restore SELinux context for /etc/pam.d and /etc/authselect/postlogin
-  command: restorecon -Rv /etc/pam.d /etc/authselect/postlogin
+- name: Restore SELinux context for postlogin
+  command: restorecon -Rv /etc/authselect/postlogin
