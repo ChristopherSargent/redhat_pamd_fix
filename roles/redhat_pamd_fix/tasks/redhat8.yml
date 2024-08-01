@@ -52,5 +52,17 @@
     group: root
     mode: 0644
 
+- name: Create symbolic link for /etc/pam.d/password-auth
+  file:
+    src: /etc/pam.d/password-auth-ac
+    dest: /etc/pam.d/password-auth
+    state: link
+
+- name: Create symbolic link for /etc/pam.d/system-auth
+  file:
+    src: /etc/pam.d/system-auth-ac
+    dest: /etc/pam.d/system-auth
+    state: link    
+
 - name: Restore SELinux context for /etc/pam.d and /etc/authselect/postlogin
   command: restorecon -Rv /etc/pam.d /etc/authselect/postlogin
